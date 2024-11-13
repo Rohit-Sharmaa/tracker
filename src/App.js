@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+
+import Navbar from "./components/navBar/Navbar";
+import Profile from "./components/profile/Profile";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import LeaderBoards from "./components/leaderboards/LeaderBoards";
+import Tournaments from "./components/tournaments/Tournaments";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="content">
+        <Routes>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/leaderboards" element={<LeaderBoards />} />
+          <Route path="/tournaments" element={<Tournaments />} />
+          <Route path="/" element={<Profile />} /> {/* Default route */}
+        </Routes>
+      </div>
+    </>
   );
 }
 
